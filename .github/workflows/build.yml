@@ -42,7 +42,7 @@ jobs:
 
       - name: Rename output (Windows)
         if: matrix.os == 'windows-latest'
-        run: mv dist/$PROJECT_NAME.exe dist/$PROJECT_NAME-windows.exe
+        run: Move-Item capture.py "$env:PROJECT_NAME.py"
 
       - name: Rename output (macOS)
         if: matrix.os == 'macos-latest'
