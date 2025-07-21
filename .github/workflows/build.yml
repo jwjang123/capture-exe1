@@ -37,6 +37,7 @@ jobs:
 
       - name: Build with PyInstaller
         run: |
+          mv capture.py ${{ env.PROJECT_NAME }}.py
           pyinstaller --onefile ${{ env.PROJECT_NAME }}.py
 
       - name: Rename output (Windows)
