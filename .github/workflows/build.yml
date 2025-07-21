@@ -21,6 +21,7 @@ jobs:
 
       - name: Extract repo name
         run: echo "PROJECT_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+        shell: bash
 
       - name: Cache pip
         uses: actions/cache@v4
@@ -42,7 +43,7 @@ jobs:
       - name: Rename output (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
-        run: mv dist/capture.exe dist/$PROJECT_NAME-windows.exe
+        run: mv dist/capture.exe dist/${{ env.PROJECT_NAME }}-windows.exe
 
       - name: Rename output (macOS)
         if: matrix.os == 'macos-latest'
