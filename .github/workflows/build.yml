@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  PROJECT_NAME: ${{ env.PROJECT_NAME }}
+  PROJECT_NAME: ${{ github.repository }}
 
 jobs:
   build:
