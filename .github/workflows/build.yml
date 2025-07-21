@@ -8,9 +8,6 @@ on:
 permissions:
   contents: write
 
-env:
-  PROJECT_NAME: ${{ github.repository }}
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -19,8 +16,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Extract repo name
+        run: echo "PROJECT_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
       - name: Cache pip
         uses: actions/cache@v4
