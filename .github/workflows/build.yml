@@ -42,22 +42,22 @@ jobs:
       - name: Rename output (Windows)
         if: matrix.os == 'windows-latest'
         shell: bash
-        run: mv dist/capture.exe dist/$PROJECT_NAME-windows.exe
+        run: mv dist/capture.exe dist/${{ env.PROJECT_NAME }}-windows.exe
 
       - name: Rename output (macOS)
         if: matrix.os == 'macos-latest'
-        run: mv dist/capture dist/$PROJECT_NAME-macos
+        run: mv dist/capture dist/${{ env.PROJECT_NAME }}-macos
 
       - name: Rename output (Linux)
         if: matrix.os == 'ubuntu-latest'
-        run: mv dist/capture dist/$PROJECT_NAME-linux
+        run: mv dist/capture dist/${{ env.PROJECT_NAME }}-linux
 
       - name: Archive build result
         uses: actions/upload-artifact@v4
         with:
-          name: $PROJECT_NAME-${{ matrix.os }}
+          name: ${{ env.PROJECT_NAME }}-${{ matrix.os }}
           path: |
-            ${{ github.workspace }}/dist/$PROJECT_NAME*
+            ${{ github.workspace }}/dist/${{ env.PROJECT_NAME }}*
 
   release:
     needs: build
