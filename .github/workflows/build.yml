@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  PROJECT_NAME: capture1
+  PROJECT_NAME: ${{ env.PROJECT_NAME }}
 
 jobs:
   build:
